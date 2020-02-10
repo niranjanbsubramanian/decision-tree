@@ -18,3 +18,15 @@ clf.fit(X_train, y_train)
 y_pred = clf.predict(X_test)
 
 print(accuracy_score(y_test, y_pred))
+
+#visualize decision tree
+import matplotlib.pyplot as plt
+import graphviz
+from graphviz import Source
+from sklearn import tree
+
+labels = data.feature_names
+dot = tree.export_graphviz(clf, feature_names = labels) 
+graph = graphviz.Source(dot)
+graph.format='png'  
+graph.render('dtree',view=True)
